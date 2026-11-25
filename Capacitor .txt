@@ -1,0 +1,8 @@
+{
+  "appId": "com.doublea.app",
+  "appName": "DoubleA",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  }
+}
