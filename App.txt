@@ -1,0 +1,70 @@
+import React, { useState } from 'react';
+import { Home, Compass, Users, ShoppingBag, User } from 'lucide-react';
+
+export default function App() {
+  const [activeTab, setActiveTab] = useState('moments');
+
+  return (
+    <div style={{ minHeight: '100vh', backgroundColor: '#FFFFFF', color: '#061B55', display: 'flex', flexDirection: 'column', fontFamily: 'sans-serif' }}>
+      {/* Header */}
+      <header style={{ backgroundColor: '#0755E8', color: '#FFFFFF', padding: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <div style={{ width: '34px', height: '34px', borderRadius: '10px', backgroundColor: '#061B55', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: '16px' }}>
+            AA
+          </div>
+          <span style={{ fontWeight: 'bold', fontSize: '20px' }}>DoubleA</span>
+        </div>
+        <span style={{ fontSize: '12px', backgroundColor: '#18A0FF', padding: '4px 10px', borderRadius: '999px' }}>
+          Live
+        </span>
+      </header>
+
+      {/* Main Content */}
+      <main style={{ flex: 1, padding: '16px' }}>
+        <div style={{ backgroundColor: '#F4F8FF', border: '1px solid #DCE8FF', borderRadius: '14px', padding: '16px', marginBottom: '14px' }}>
+          <h2 style={{ margin: '0 0 6px 0', color: '#061B55', fontSize: '18px' }}>
+            Barka da zuwa DoubleA
+          </h2>
+          <p style={{ margin: 0, color: '#334155', fontSize: '14px', lineHeight: 1.5 }}>
+            Shafin da aka buɗe a yanzu: <strong>{activeTab.toUpperCase()}</strong>. Ana gina tsarin manhajar sada zumunta ta DoubleA mataki-mataki.
+          </p>
+        </div>
+      </main>
+
+      {/* Bottom Navigation */}
+      <nav style={{ backgroundColor: '#FFFFFF', borderTop: '1px solid #E2E8F0', display: 'flex', justifyContent: 'space-around', padding: '10px 0' }}>
+        {[
+          { id: 'moments', label: 'Moments', icon: Home },
+          { id: 'explore', label: 'Explore', icon: Compass },
+          { id: 'groups', label: 'Groups', icon: Users },
+          { id: 'market', label: 'Market', icon: ShoppingBag },
+          { id: 'profile', label: 'Profile', icon: User },
+        ].map((tab) => {
+          const Icon = tab.icon;
+          const isActive = activeTab === tab.id;
+          return (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              style={{
+                background: 'none',
+                border: 'none',
+                color: isActive ? '#0755E8' : '#64748B',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '4px',
+                fontSize: '11px',
+                fontWeight: isActive ? 'bold' : 'normal',
+                cursor: 'pointer'
+              }}
+            >
+              <Icon size={20} />
+              <span>{tab.label}</span>
+            </button>
+          );
+        })}
+      </nav>
+    </div>
+  );
+}
